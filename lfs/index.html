@@ -1615,7 +1615,7 @@ gerard@linuxfromscratch.org</p>
 
 <p>Há muitas razões pelas quais você dever querer ler este livro. Uma das questões que muita gente levanta é "por que se embananar construindo manualmente um sistema Linux do zero quando você pode apenas baixar e intalar uma dsitribuição já existente?".</p>
 
-<p>Uma razão importante para a existência deste projeto é ajudar você a aprender como um sistema Linux funciona de dentro para fora. OCnstruindo um Linux do zero ajuda a demonstrar o que faz o Linux ser rápido, e como as coisas funcionam em conjunto e dependem umas das outras. Uma das melhores coisas que essa experiência de aprendizagem pode fornecer é a habilidade par acustomizar um sistema Linux para cumprir susas próprias necessidades.</p>
+<p>Uma razão importante para a existência deste projeto é ajudar você a aprender como um sistema Linux funciona de dentro para fora. Construindo um Linux do zero ajuda a demonstrar o que faz o Linux ser rápido, e como as coisas funcionam em conjunto e dependem umas das outras. Uma das melhores coisas que essa experiência de aprendizagem pode fornecer é a habilidade par acustomizar um sistema Linux para cumprir susas próprias necessidades.</p>
 
 <p>Outro benefício chave do Linux do Zero é permitir que você tenha mais controle sobre o sustema sem depender de alguma implementaão Linux alheia. Com o Linux do Zero você está no controle e é capaz de ditar cada aspecto do sistema.</p>
 
@@ -1625,8 +1625,24 @@ gerard@linuxfromscratch.org</p>
 
 <p>O objetivo do Linux do Zero é construir um sistema fundamentalmente completo e utilizável. Se você não quer construir seu sistema Linux do zero, você pode não se beneficiar completamente de toda a informação aqui constante.</p>
 
-<p>Existem inúmeras outras boas razões para construir seu próprio sistema Linux do Zero. Ao fim e ao cabo, conhecimento é de longe a razão mais poderosa. Conforme você prosseguir na experiência Linux do Zero, você vai descobrir o poder que a informaão e o conhecimento realmente trazem.</p>
+<p>Existem inúmeras outras boas razões para construir seu próprio sistema Linux do Zero. Ao fim e ao cabo, conhecimento é de longe a razão mais importante. Conforme você prosseguir na experiência Linux do Zero, você vai descobrir o poder que a informação e o conhecimento realmente trazem.</p>
 </div>
+<div class="sect1" lang="en" xml:lang="en">
+<h1 class="sect1"><a id="pre-architecture" name="pre-architecture"></a>iii. Arquiteturas de destino</h1>
 
+<p>As principais arquiteturas visadas pelo Linux do Zero s&atilde;o as CPU&#39;s AMD/Intel x86 (32 bits) e x86_64 (64 bits). Por outro lado, as instru&ccedil;&otilde;es deste livro tamb&eacute;m podem funcionar, com algumas modifica&ccedil;&otilde;es, para os CPU&#39;s Power PC e ARM. Para construir um sistema que utiliza uma destas CPU&#39;s, o principal pr&eacute;-requisito, junto a outros vistos mais adiante, &eacute; um sistema Linux, como um Linux do Zero instalado previamente, Ubuntu, Red Hat/ Fedora, SuSE, ou outra distribui&ccedil;&atilde;o rodando na arquitetura de destino. Note tamb&eacute;m que um distribui&ccedil;&atilde;o de 32 bits pode ser instalada e usada como um sistema anfitri&atilde;o em um computador AMD/Intel de 64 bits.</p>
+
+<p>Alguns outros fatos sobre sistemas de 64 bits merecem ser aqui mencionados. Quando comparado a um sitema de 64 bits, o tamanho do arquivo execut&aacute;vel &eacute; consideravelmente maior e a velocidade de execu&ccedil;&atilde;o &eacute; levemente mais r&aacute;pida. Por exemplo, numa constru&ccedil;&atilde;o de testes Linux do Zero 6.5, numa CPU Core 2 Duo, foram obtidas as seguintes estat&iacute;sticas:</p>
+
+<pre class="screen">
+<code class="computeroutput">Arquitetura  Tempo de constru&ccedil;&atilde;o     Tamanho da constru&ccedil;&atilde;o
+32-bit       198.5 minutos           648 MB
+64-bit       190.6 minutos           709 MB</code>
+</pre>
+
+<p>Como se pode ver, uma constru&ccedil;&atilde;o de 64 bits &eacute; apenas 4% mais r&aacute;pido e 9% maior do que uma constru&ccedil;&atilde;o de 32 bits. O ganho obtido por um sistema de 64 bits &eacute; relativamente m&iacute;nimo. Com efeito, se voc&ecirc; tem mais de 4GB de RAM ou quer manipular dados que excedem o tamanho de 4GB, as vantagens de um sistema de 64 bits s&atilde;o substanciais.</p>
+
+<p>Uma constru&ccedil;&atilde;o Linux do Zero padr&atilde;o de 64 bits &eacute; considerada um sistema de 64 bits &quot;puro&quot;. Isto &eacute;, suporta apenas execut&aacute;veis de 64 bits. Se for pra cosntruir um sistema &quot;multi-lib&quot;, &eacute; preciso compilar muitos programas duas vezes: uma para 32 bits e outra para 64 bits. Isto n&atilde;o &eacute; diretamente suportado no Linux do Zero porque acabaria afetando o objetivo educacional de prover as instru&ccedil;&otilde;es necess&aacute;rias para uma base s&oacute;lida em sistemas Linux. Voc&ecirc; pode consultar o projeto <a class="ulink" title="Cross Linux From Scratch" href="https://artfesg.github.io/linux/clfs/">Linux do Zero Cruzado</a> para maiores informa&ccedil;&otilde;es sobre este t&oacute;pico avan&ccedil;ado.</p>
+</div>
 
 </body></html>
