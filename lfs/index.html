@@ -1,9 +1,8 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <!--
 ©2017
 @artfesg
--->
-<head>
+--><head>
 	<meta content="application/xhtml+xml; charset=utf-8" http-equiv="Content-Type">
 	<title>Linux do Zero (SysVInit)</title>
 	<style rel="stylesheet" type="text/css" data-href="http://www.linuxfromscratch.org/lfs/view/stable/stylesheets/lfs.css">/*
@@ -1299,7 +1298,7 @@ div.navheader ul{
 		<li class="sect1"><a href="#prologo">Prólogo</a></li>
 		<li class="sect1"><a href="#publico-alvo">Público-alvo</a></li>
 		<li class="sect1"><a href="#arquiteturas">Arquiteturas de destino</a></li>
-		<li class="sect1"><a href="http://www.linuxfromscratch.org/lfs/view/stable/prologue/standards.html">LFS and Standards</a></li>
+		<li class="sect1"><a href="#padroes">Padrões</a></li>
 		<li class="sect1"><a href="http://www.linuxfromscratch.org/lfs/view/stable/prologue/package-choices.html">Rationale for Packages in the Book</a></li>
 		<li class="sect1"><a href="http://www.linuxfromscratch.org/lfs/view/stable/prologue/prerequisites.html">Prerequisites</a></li>
 		<li class="sect1"><a href="http://www.linuxfromscratch.org/lfs/view/stable/prologue/typography.html">Typography</a></li>
@@ -1630,19 +1629,207 @@ gerard@linuxfromscratch.org</p>
 <div class="sect1" lang="en" xml:lang="en">
 <h1 class="sect1"><a id="arquiteturas" name="arquiteturas"></a>iii. Arquiteturas de destino</h1>
 
-<p>As principais arquiteturas visadas pelo Linux do Zero s&atilde;o as CPU&#39;s AMD/Intel x86 (32 bits) e x86_64 (64 bits). Por outro lado, as instru&ccedil;&otilde;es deste livro tamb&eacute;m podem funcionar, com algumas modifica&ccedil;&otilde;es, para as CPU&#39;s Power PC e ARM. Para construir um sistema que utiliza uma destas CPU&#39;s, o principal pr&eacute;-requisito, junto a outros vistos mais adiante, &eacute; um sistema Linux, como um Linux do Zero instalado previamente, Ubuntu, Red Hat/ Fedora, SuSE, ou outra distribui&ccedil;&atilde;o rodando na arquitetura de destino. Note tamb&eacute;m que um distribui&ccedil;&atilde;o de 32 bits pode ser instalada e usada como um sistema anfitri&atilde;o em um computador AMD/Intel de 64 bits.</p>
+<p>As principais arquiteturas visadas pelo Linux do Zero são as CPU's AMD/Intel x86 (32 bits) e x86_64 (64 bits). Por outro lado, as instruções deste livro também podem funcionar, com algumas modificações, para as CPU's Power PC e ARM. Para construir um sistema que utiliza uma destas CPU's, o principal pré-requisito, junto a outros vistos mais adiante, é um sistema Linux, como um Linux do Zero instalado previamente, Ubuntu, Red Hat/ Fedora, SuSE, ou outra distribuição rodando na arquitetura de destino. Note também que um distribuição de 32 bits pode ser instalada e usada como um sistema anfitrião em um computador AMD/Intel de 64 bits.</p>
 
-<p>Alguns outros fatos sobre sistemas de 64 bits merecem ser aqui mencionados. Quando comparado a um sitema de 64 bits, o tamanho do arquivo execut&aacute;vel &eacute; consideravelmente maior e a velocidade de execu&ccedil;&atilde;o &eacute; levemente mais r&aacute;pida. Por exemplo, numa constru&ccedil;&atilde;o de testes Linux do Zero 6.5, numa CPU Core 2 Duo, foram obtidas as seguintes estat&iacute;sticas:</p>
+<p>Alguns outros fatos sobre sistemas de 64 bits merecem ser aqui mencionados. Quando comparado a um sitema de 64 bits, o tamanho do arquivo executável é consideravelmente maior e a velocidade de execução é levemente mais rápida. Por exemplo, numa construção de testes Linux do Zero 6.5, numa CPU Core 2 Duo, foram obtidas as seguintes estatísticas:</p>
 
-<pre class="screen">
-<code class="computeroutput">Arquitetura  Tempo de constru&ccedil;&atilde;o     Tamanho da constru&ccedil;&atilde;o
+<pre class="screen"><code class="computeroutput">Arquitetura  Tempo de construção     Tamanho da construção
 32-bit       198.5 minutos           648 MB
 64-bit       190.6 minutos           709 MB</code>
 </pre>
 
-<p>Como se pode ver, uma constru&ccedil;&atilde;o de 64 bits &eacute; apenas 4% mais r&aacute;pido e 9% maior do que uma constru&ccedil;&atilde;o de 32 bits. O ganho obtido por um sistema de 64 bits &eacute; relativamente m&iacute;nimo. Com efeito, se voc&ecirc; tem mais de 4GB de RAM ou quer manipular dados que excedem o tamanho de 4GB, as vantagens de um sistema de 64 bits s&atilde;o substanciais.</p>
+<p>Como se pode ver, uma construção de 64 bits é apenas 4% mais rápido e 9% maior do que uma construção de 32 bits. O ganho obtido por um sistema de 64 bits é relativamente mínimo. Com efeito, se você tem mais de 4GB de RAM ou quer manipular dados que excedem o tamanho de 4GB, as vantagens de um sistema de 64 bits são substanciais.</p>
 
-<p>Uma constru&ccedil;&atilde;o Linux do Zero padr&atilde;o de 64 bits &eacute; considerada um sistema de 64 bits &quot;puro&quot;. Isto &eacute;, suporta apenas execut&aacute;veis de 64 bits. Se for pra cosntruir um sistema &quot;multi-lib&quot;, &eacute; preciso compilar muitos programas duas vezes: uma para 32 bits e outra para 64 bits. Isto n&atilde;o &eacute; diretamente suportado no Linux do Zero porque acabaria afetando o objetivo educacional de prover as instru&ccedil;&otilde;es necess&aacute;rias para uma base s&oacute;lida em sistemas Linux. Voc&ecirc; pode consultar o projeto <a class="ulink" title="Cross Linux From Scratch" href="https://artfesg.github.io/linux/clfs/">Linux do Zero Cruzado</a> para maiores informa&ccedil;&otilde;es sobre este t&oacute;pico avan&ccedil;ado.</p>
+<p>Uma construção Linux do Zero padrão de 64 bits é considerada um sistema de 64 bits "puro". Isto é, suporta apenas executáveis de 64 bits. Se for pra cosntruir um sistema "multi-lib", é preciso compilar muitos programas duas vezes: uma para 32 bits e outra para 64 bits. Isto não é diretamente suportado no Linux do Zero porque acabaria afetando o objetivo educacional de prover as instruções necessárias para uma base sólida em sistemas Linux. Você pode consultar o projeto <a class="ulink" title="Cross Linux From Scratch" href="https://artfesg.github.io/linux/clfs/">Linux do Zero Cruzado</a> para maiores informações sobre este tópico avançado.</p>
 </div>
+<div class="sect1" lang="en" xml:lang="en">
+<h1 class="sect1"><a id="padroes" name="padroes"></a>iv. Padrões</h1>
+
+<p>A estrutura do Linux do Zero segue os padrões Linux o máximo quanto possível. os principais são:</p>
+
+<div class="itemizedlist">
+<ul>
+	<li class="listitem">
+	<p><a class="ulink" href="http://pubs.opengroup.org/onlinepubs/9699919799/">POSIX.1-2008</a>.</p>
+	</li>
+	<li class="listitem">
+	<p><a class="ulink" href="http://refspecs.linuxfoundation.org/fhs.shtml">Filesystem Hierarchy Standard (FHS) Version 3.0</a></p>
+	</li>
+	<li class="listitem">
+	<p><a class="ulink" href="http://refspecs.linuxfoundation.org/lsb.shtml">Linux Standard Base (LSB) Version 5.0</a></p>
+
+	<p>O Linux do Zero possui quatro padrões separados: Core, Desktop, Runtime Languages, e Imaging. Além dos requisitos genéricos, existem também os requisitos específicos de cada arquitetura. Há também duas áreas para uso experimental: Gtk3 e Graphics. O Linux do Zero procura se enquadrar nas exigências das arquiteturas discutidas na seção anterior.</p>
+
+	<div class="admon note"><img alt="[Note]" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAIdJREFUSIntkzEOgDAIRZ96sd5MjlZPpoMdGqOFFrr5ExZS3usAEBMpNSUCnKXCJTX8VbJGG4G9lmxOWAYWID36qfSzV6BKegVSBrNRcvTCtW2xvFEHLRI3PGzvW3C3xAJXJV+HJtwHMyWC/ech2/LD58KZDe8RDMGtgmG4ReCCawI3vCUIgV8/9aoCT+X8kwAAAABJRU5ErkJggg==">
+	<h3>Nota</h3>
+
+	<p>Muitas pessoas não concordam com os requisitos exigidos pela Linux Standard Base (LSB). A proposta principal em se definir isso é garantir que softwares proprietários estarão aptos a serem instalados e a rodarem corretamente em um sistema compatível. Como o Linux do Zero é se baseia nas fontes, o usuário tem o controle total sobre quais pacotes serão escolhidos e pode optar por não instalar alguns pacotes que são especificados pelo Linux do Zero.</p>
+	</div>
+	</li>
+</ul>
+</div>
+
+<p>Criar um sistema Linux do Zero capaz de passar nos testes para certificação LSB é possível, mas não sem a adição de pacotes que transcendem o escopo do LFS. Esses pacotes adicionais tem instruções para instalação no BLFS.</p>
+
+<div class="variablelist">
+<h3>Pacotes disponibilizados pelo LFS que são necessários para satisfazer as condições do LSB</h3>
+
+<table border="0" class="variablelist">
+	<colgroup>
+		<col align="left" valign="top">
+		<col>
+	</colgroup>
+	<tbody>
+		<tr>
+			<td>
+			<p><span class="term"><span class="emphasis"><em>LSB Core:</em></span></span></p>
+			</td>
+			<td>
+			<p>Bash, Bc, Binutils, Coreutils, Diffutils, File, Findutils, Gawk, Grep, Gzip, M4, Man-DB, Ncurses, Procps, Psmisc, Sed, Shadow, Tar, Util-linux, Zlib</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span class="term"><span class="emphasis"><em>LSB Desktop:</em></span></span></p>
+			</td>
+			<td>
+			<p>Nenhum</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span class="term"><span class="emphasis"><em>LSB Runtime Languages:</em></span></span></p>
+			</td>
+			<td>
+			<p>Perl</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span class="term"><span class="emphasis"><em>LSB Imaging:</em></span></span></p>
+			</td>
+			<td>
+			<p>Nenhum</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span class="term"><span class="emphasis"><em>LSB Gtk3 e LSB Graphics (experimentais):</em></span></span></p>
+			</td>
+			<td>
+			<p>Nenhum</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div class="variablelist">
+<h3>Pacotes disponibilizados pelo BLFS necessários para satisfazer os requisitos do LSB</h3>
+
+<table border="0" class="variablelist">
+	<colgroup>
+		<col align="left" valign="top">
+		<col>
+	</colgroup>
+	<tbody>
+		<tr>
+			<td>
+			<p><span class="term"><span class="emphasis"><em>LSB Core:</em></span></span></p>
+			</td>
+			<td>
+			<p>At, Batch (uma parte do At), Cpio, Ed, Fcrontab, Initd-tools, Lsb_release, NSPR, NSS, PAM, Pax, Sendmail (ou Postfix ou Exim), time</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span class="term"><span class="emphasis"><em>LSB Desktop:</em></span></span></p>
+			</td>
+			<td>
+			<p>Alsa, ATK, Cairo, Desktop-file-utils, Freetype, Fontconfig, Gdk-pixbuf, Glib2, GTK+2, Icon-naming-utils, Libjpeg-turbo, Libpng, Libtiff, Libxml2, MesaLib, Pango, Qt4, Xdg-utils, Xorg</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span class="term"><span class="emphasis"><em>LSB Runtime Languages:</em></span></span></p>
+			</td>
+			<td>
+			<p>Python, Libxml2, Libxslt</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span class="term"><span class="emphasis"><em>LSB Imaging:</em></span></span></p>
+			</td>
+			<td>
+			<p>CUPS, Cups-filters, Ghostscript, SANE</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span class="term"><span class="emphasis"><em>LSB Gtk3 e LSB Graphics (experimentais):</em></span></span></p>
+			</td>
+			<td>
+			<p>GTK+3</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div class="variablelist">
+<h3>Pacotes não suportados pelo LFS ou BLFS necessários para satisfazer os requisitos do LSB</h3>
+
+<table border="0" class="variablelist">
+	<colgroup>
+		<col align="left" valign="top">
+		<col>
+	</colgroup>
+	<tbody>
+		<tr>
+			<td>
+			<p><span class="term"><span class="emphasis"><em>LSB Core:</em></span></span></p>
+			</td>
+			<td>
+			<p>Nenhum</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span class="term"><span class="emphasis"><em>LSB Desktop:</em></span></span></p>
+			</td>
+			<td>
+			<p>Nenhum</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span class="term"><span class="emphasis"><em>LSB Runtime Languages:</em></span></span></p>
+			</td>
+			<td>
+			<p>Nenhum</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span class="term"><span class="emphasis"><em>LSB Imaging:</em></span></span></p>
+			</td>
+			<td>
+			<p>Nenhum</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<p><span class="term"><span class="emphasis"><em>LSB Gtk3 e LSB Graphics (experimentais):</em></span></span></p>
+			</td>
+			<td>
+			<p>Nenhum</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</div>
+
 
 </body></html>
