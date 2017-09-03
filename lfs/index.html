@@ -1299,7 +1299,7 @@ div.navheader ul{
 		<li class="sect1"><a href="#publico-alvo">Público-alvo</a></li>
 		<li class="sect1"><a href="#arquiteturas">Arquiteturas de destino</a></li>
 		<li class="sect1"><a href="#padroes">Padrões</a></li>
-		<li class="sect1"><a href="http://www.linuxfromscratch.org/lfs/view/stable/prologue/package-choices.html">Rationale for Packages in the Book</a></li>
+		<li class="sect1"><a href="#jutificativa-pacotes">Justificativa para os pacotes no livro</a></li>
 		<li class="sect1"><a href="http://www.linuxfromscratch.org/lfs/view/stable/prologue/prerequisites.html">Prerequisites</a></li>
 		<li class="sect1"><a href="http://www.linuxfromscratch.org/lfs/view/stable/prologue/typography.html">Typography</a></li>
 		<li class="sect1"><a href="http://www.linuxfromscratch.org/lfs/view/stable/prologue/organization.html">Structure</a></li>
@@ -1830,6 +1830,349 @@ gerard@linuxfromscratch.org</p>
 </table>
 </div>
 </div>
+<div class="sect1" xml:lang="en" lang="en">
+<h1 class="sect1"><a id="justificativa-pacotes" name="justificativa-pacotes"></a>v. Justificativa para pacotes no livro</h1>
 
+<p>Como estabelecido anteriormente, o objetivo do LFS é compilar um sistema básico completo e utilizável. Isso inclui todos os pacotes necessários para replicálo enquenato provê uma base relativamente mínima através da qual seja possível customizar um sistema mais completo de acordo com as escolhas do usuário. Isto não quer dizer que o LFS é o menor sistema possível. Há muitos pacotes importantes inclusos que não são estritamente requeridos. A lista abaixo contém as justificativa para cada pacote incluso neste livro.</p>
 
+<div class="itemizedlist">
+<ul>
+	<li class="listitem">
+	<p>Acl</p>
+
+	<p>Esse pacote contém utilitários para administrar listas de controle de acesso (Access Control Lists), que são usadas apra definir de maneira mais refinada os direitos de acesso a arquivos e pastas.</p>
+	</li>
+	<li class="listitem">
+	<p>Attr</p>
+
+	<p>Esse pacote contém programas para administração de atributos extendidos em objetos de sistemas de arquivos.</p>
+	</li>
+	<li class="listitem">
+	<p>Autoconf</p>
+
+	<p>Esse pacote contém programas para produção de shell scripts que podem configurar automaticamente código-fonte obtidos a partir de um modelo. É frequentemente necessário para recompilar um pacote após atualizações nos procedimentos de compilação.</p>
+	</li>
+	<li class="listitem">
+	<p>Automake</p>
+
+	<p>Esse pacote contém programas para geração de makefiles a partir de um modelo. É frequentemente necessário para recompilar um pacote após atualizações nos procedimentos de compilação.</p>
+	</li>
+	<li class="listitem">
+	<p>Bash</p>
+
+	<p>Esse apcote satisfaz um requerimento LSB do tipo Core, fornecendo uma interface Bourne Shell para o sistema. Foi escolhido detre todos os outros pacotes de shell porque é o mais comum e possui mais recursos além das funções básicas de um shell.</p>
+	</li>
+	<li class="listitem">
+	<p>Bc</p>
+
+	<p>Esse pacote provê uma linguagem de processamento númerico de precisão arbitrária. Satisfaz um requisito necessário quanto se compila o kernel Linux.</p>
+	</li>
+	<li class="listitem">
+	<p>Binutils</p>
+
+	<p>Esse pacote contém um linker, um assembler, e outras ferramentas para manipulação de arquivos-objeto (object files) Os programas desse pacote são necessários para compilar a maior parte dos pacotes no LFS e no BLFS.</p>
+	</li>
+	<li class="listitem">
+	<p>Bison</p>
+
+	<p>Esse pacote contém a versão GNU do yacc (Yet Another Compiler Compiler), necessário para compilar outros programas inclusos no LFS.</p>
+	</li>
+	<li class="listitem">
+	<p>Bzip2</p>
+
+	<p>Esse pacote contpem programas para compressão e extração de arquivos. É requerido para extrair muitos pacotes do LFS.</p>
+	</li>
+	<li class="listitem">
+	<p>Check</p>
+
+	<p>Esse pacote contém ferramentas de teste para outros programas. É instalado apenas dentre as ferramentas temporárias.</p>
+	</li>
+	<li class="listitem">
+	<p>Coreutils</p>
+
+	<p>Esse pacote contém programas essenciais para visualização e manipulação de arquivos e pastas. Estes programas são necessários para gerenciamento de arquivos por linha de comando e para os procedimentos&nbsp; de intalação de todos os pacotes do LFS.</p>
+	</li>
+	<li class="listitem">
+	<p>DejaGNU</p>
+
+	<p>Esse pacote contém uma framework para teste de outros programas. É instalado apenas entre as ferramentas temporárias.</p>
+	</li>
+	<li class="listitem">
+	<p>Diffutils</p>
+
+	<p>Esse pacote contém programas que mostram as diferenças entre arquivos e pastas. Estes pragramas podem ser utilizados para criar patches e também são usados nos procedimentos de compilação de muitos pacotes.</p>
+	</li>
+	<li class="listitem">
+	<p>E2fsprogs</p>
+
+	<p>Esse pacote contpem os utilitários para manipulação dos sistemas de arquivos ext2, ext3 e ext4. Este são os mais comuns e mais bem testados sistemas de arquivos nativamente suportados pelo Linux.&nbsp;</p>
+	</li>
+	<li class="listitem">
+	<p>Eudev</p>
+
+	<p>Esse pacote é um gerenciador de serviços. Ele controla de forma dinâmica as entradas no diretório /dev, conforme os dispositivos são adicionados ou removidos do sistema.</p>
+	</li>
+	<li class="listitem">
+	<p>Expat</p>
+
+	<p>Esse pacote contém uma bilbioteca de XML parsing relativamente pequena. É requerido pelo módulo XML::Parser Perl.</p>
+	</li>
+	<li class="listitem">
+	<p>Expect</p>
+
+	<p>Esse pacote possui um programa para executar scripts de diálogos com outros programas interativos. É comumente usado para testas outros pacotes. É intalado apenas entre as ferramentas temporárias.</p>
+	</li>
+	<li class="listitem">
+	<p>File</p>
+
+	<p>Esse pacote contém um utilitário para determinação do tipo de um arquivo. Poucos pacotes necessitam dele para serem compilados.</p>
+	</li>
+	<li class="listitem">
+	<p>Findutils</p>
+
+	<p>Esse pacote possui programas para encontrar arquivos em um sitema de arquivos. É usado em scrits de compilação de muitos pacotes.</p>
+	</li>
+	<li class="listitem">
+	<p>Flex</p>
+
+	<p>Esse pacote contpem um utilitário para gerar programas que reconheçam padrões em textos. É a versão GNU do lex(lexical analyzer). É requisitado para compilação de muitos pacotes do LFS.</p>
+	</li>
+	<li class="listitem">
+	<p>Gawk</p>
+
+	<p>Esse pacote contém programas para manipulação de arquivos de texto. É a versão GNU do awk(Aho-Weinberg-Kernighan). É usado em scripts de compilação de mutios outros pacotes.</p>
+	</li>
+	<li class="listitem">
+	<p>Gcc</p>
+
+	<p>Esse pacote é o GNU Compiler Colletion. Ele contém os compiladores de C e C++, bem como muitos outros não compilados pelo LFS.</p>
+	</li>
+	<li class="listitem">
+	<p>GDBM</p>
+
+	<p>Esse pacote contém a biblioteca GNU Database Manager. É usado um outro pacote do LFS, o Man-DB.</p>
+	</li>
+	<li class="listitem">
+	<p>Gettext</p>
+
+	<p>Esse pacote contpem utilitários e bibliotecas para internacionalização e localização de vários pacotes.</p>
+	</li>
+	<li class="listitem">
+	<p>Glibc</p>
+
+	<p>Esse pacite possui a pricipal biblioteca C. Os programas do Linux não podem rodar sem ele.</p>
+	</li>
+	<li class="listitem">
+	<p>GMP</p>
+
+	<p>Esse pacote contém bibliotecas matemáticas que fornecem funções para precisão aritmética arbitrária. É requerido para compilar o GCC.</p>
+	</li>
+	<li class="listitem">
+	<p>Gperf</p>
+
+	<p>Esse pacote contém um programa que gera uma função hash perfeita para um <u><a title="key set">conjunto de chaves</a></u>. É requerido pelo Eudev.</p>
+	</li>
+	<li class="listitem">
+	<p>Grep</p>
+
+	<p>Esse pacote possui programas para pesquisa através de arquivos. Tais programas são usados por build scripts de muitos pacotes.</p>
+	</li>
+	<li class="listitem">
+	<p>Groff</p>
+
+	<p>Esse pacote contém programas para processamento e formatação de texto. Uma função importante de tais programs é a formatação de man pages.</p>
+	</li>
+	<li class="listitem">
+	<p>GRUB</p>
+
+	<p>Esse pacote é o Grand Unified Boot Loader. É um dos vários bootloaders existentes, porém é o mais flexível de todos.</p>
+	</li>
+	<li class="listitem">
+	<p>Gzip</p>
+
+	<p>Esse pacote contém programas para compressão e extração de arquivos. É necessário para extrair muitos pacotes do LFS e do BLFS.</p>
+	</li>
+	<li class="listitem">
+	<p>Iana-etc</p>
+
+	<p>Esse pacote provê dados para serviços de rede e protocolos. É necessário para habilitar cpacidades específicas de rede.</p>
+	</li>
+	<li class="listitem">
+	<p>Inetutils</p>
+
+	<p>Esse pacote contém programas para admnistração básica de rede.</p>
+	</li>
+	<li class="listitem">
+	<p>Intltool</p>
+
+	<p>Esse pacote contém ferramentas para extrair strings traduzíveis de arquivos-fonte.</p>
+	</li>
+	<li class="listitem">
+	<p>IProute2</p>
+
+	<p>Esse pacote contpem programas para networking básico e avançado em IPv4 e IPv6. Ele foi escolhido entre outras ferramentas de rede (net-tools) pelas suas capacidades de IPv6.</p>
+	</li>
+	<li class="listitem">
+	<p>Kbd</p>
+
+	<p>Esse pacote possui arquivos key-table, utilitários para teclados non-US e uma variedade de fontes para console.</p>
+	</li>
+	<li class="listitem">
+	<p>Kmod</p>
+
+	<p>Esse pacote contém programas necessários para administrar módulos do kernel Linux.</p>
+	</li>
+	<li class="listitem">
+	<p>Less</p>
+
+	<p>Esse pacote contém um excelente visualizador de arquivos de texto, possibilitando rolar para cima ou para baixo na vizualização de um arquivo. É utilizado também pelo Man-DB para vizualizar manpages.</p>
+	</li>
+	<li class="listitem">
+	<p>Libcap</p>
+
+	<p>Esse pacote implementa as interfaces do espao de usupario para as capacidades POSIX 1003.1e disponpiveis em kernel's Linux.</p>
+	</li>
+	<li class="listitem">
+	<p>Libpipeline</p>
+
+	<p>O pacote Libpipeline contém uma biblioteca para manipulação de pipelines de subprocessos de uma forma flexível e conveniente. É requerido pelo pacote Man-DB.</p>
+	</li>
+	<li class="listitem">
+	<p>Libtool</p>
+
+	<p>Esse pacote contém a biblioteca genérica do GNU para suporte de scripts. Ele transforma a complexidade de se usar bibliotecas compartilhadas em uma consistente e portátil interface. É necessário pela suite de testes de outros pacotes do LFS.</p>
+	</li>
+	<li class="listitem">
+	<p>Linux Kernel</p>
+
+	<p>Esse pacote é o Sistema Operacional. É o Linux no ambiente GNU/Linux.</p>
+	</li>
+	<li class="listitem">
+	<p>M4</p>
+
+	<p>Esse pacote contém um processador de textos útil para construão de ferramentas para outros programas.</p>
+	</li>
+	<li class="listitem">
+	<p>Make</p>
+
+	<p>Esse pacote contém um programa para compilação direta de pacotes. É requerido por quase todos os pacotes do LFS.</p>
+	</li>
+	<li class="listitem">
+	<p>Man-DB</p>
+
+	<p>Esse pacote contém programas para encontrar e visualizar manpages. Foi escolhido no lugar do pacote man devido às capacidades superiores de internacionalização.</p>
+	</li>
+	<li class="listitem">
+	<p>Man-pages</p>
+
+	<p>Esse pacote contém o conteúdo atual dos manpages básicos do Linux.</p>
+	</li>
+	<li class="listitem">
+	<p>MPC</p>
+
+	<p>Esse pacote contém funções para a aritmética de números complexos. É requerido pelo GCC.</p>
+	</li>
+	<li class="listitem">
+	<p>MPFR</p>
+
+	<p>Esse pacote contém funções para precisão aritmética mútipla. É requerido pelo GCC.</p>
+	</li>
+	<li class="listitem">
+	<p>Ncurses</p>
+
+	<p>Esse pacote contém bibliotecas para manipulação terminal-independente de caracteres. Ele é usado frequentemente para prover o controle do cursor para um sistema baseado em menus. É necessário para vários pacotes do LFS.</p>
+	</li>
+	<li class="listitem">
+	<p>Patch</p>
+
+	<p>Esse pacote contém um programa para modificação e crialçao de arquivos através da aplicação de um arquivo patch tipicamente criado pelo programa <u><a title="ver Diffutils">diff</a></u>. É necessário para o procedimento de compilação de muitos pacotes do LFS.</p>
+	</li>
+	<li class="listitem">
+	<p>Perl</p>
+
+	<p>Esse pacote é um intérprete para a linguagem de runtime PERL. É necessário para a instalação e teste de vários pacotes do LFS.</p>
+	</li>
+	<li class="listitem">
+	<p>Pkg-config</p>
+
+	<p>Esse pacote provê um programa para retornar metadados sobre uma biblioteca ou um pacote instalado.</p>
+	</li>
+	<li class="listitem">
+	<p>Procps-NG</p>
+
+	<p>Esse pacote contém programas para monitoramento de processos. Esse programas são úteis para administação de sistema e também são usados pelos bootscripts do LFS.</p>
+	</li>
+	<li class="listitem">
+	<p>Psmisc</p>
+
+	<p>Esse pacote contém programas que mostram informações sobre processos em execução. Esses programas são úteis para administração do sistema.</p>
+	</li>
+	<li class="listitem">
+	<p>Readline</p>
+
+	<p>Esse pacote é um conjunto de bibliotecas que oferecem recursos para edição e histórico de linhas de comando. É usado pelo Bash.</p>
+	</li>
+	<li class="listitem">
+	<p>Sed</p>
+
+	<p>Esse pacote permite edição de texto sem que seja preciso abri-lo em um editor. É também requerido pela maioria dos configure scripts dos pacotes do LFS.</p>
+	</li>
+	<li class="listitem">
+	<p>Shadow</p>
+
+	<p>Esse pacote contém programas para manipulação de senhas de forma segura.</p>
+	</li>
+	<li class="listitem">
+	<p>Sysklogd</p>
+
+	<p>Esse pacote contém programas para mensagens de logging do sistema, tais como aquelas emitidas pelo kernel ou por processos daemon quando eventos não usuais ocorrem.</p>
+	</li>
+	<li class="listitem">
+	<p>Sysvinit</p>
+
+	<p>Esse pacote provê o programa init, que é o pai de todos os outros processos no sistema Linux.</p>
+	</li>
+	<li class="listitem">
+	<p>Tar</p>
+
+	<p>Esse pacote provê recursos para arquivamento e extração de todos os pacotes utilizados no LFS.</p>
+	</li>
+	<li class="listitem">
+	<p>Tcl</p>
+
+	<p>Esse pacote contém o Tool Command Language (ferramenta de linguagem de comando) utilizado em muitas suites de testes em pacotes do LFS. É o único instalado dentre as ferramentas temporárias.</p>
+	</li>
+	<li class="listitem">
+	<p>Texinfo</p>
+
+	<p>Esse pacote contém programas para leitura, escrita e conversão de info pages. É utilizado nos procedimentos de instalação de muitos pacotes do LFS.</p>
+	</li>
+	<li class="listitem">
+	<p>Util-linux</p>
+
+	<p>Esse pacote contém uma miscelânea de utilitários. Entre estes estão utilitários para manipulaão de sistemas de arquivos, consoles, partições e mensagens.</p>
+	</li>
+	<li class="listitem">
+	<p>Vim</p>
+
+	<p>Esse pacote contém um editor. Foi escolhido pela compatibilidade com o clássico editor vi e seu grande número de capacidades poderosas. Um editor é uma escolha bastante pessoal para muitos usuários e qualquer outro editor pode ser escohido se desejado.</p>
+	</li>
+	<li class="listitem">
+	<p>XML::Parser</p>
+
+	<p>Esse pacote é um módulo Perl que interage com o Expat.</p>
+	</li>
+	<li class="listitem">
+	<p>XZ Utils</p>
+
+	<p>Esse pacote contém programas para compressão e extração de arquivos. Ele provê a maior compressão geralmente disponível e é útil para extração de pacotes nos formatos XZ e LZMA.</p>
+	</li>
+	<li class="listitem">
+	<p>Zlib</p>
+
+	<p>Esse pacote contém rotinas de compressão e descompressão usadas por alguns programas.</p>
+	</li>
+</ul>
+</div>
+</div>
 </body></html>
