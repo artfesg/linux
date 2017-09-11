@@ -1,0 +1,22 @@
+# compress, ftp://ftp.sunet.se/pub/Linux/distributions/slackware/slackware-8.0/sources/a/bin/
+
+name=compress
+version=4.0
+source=($name-$version.tar.gz $name.diff.gz)
+
+build() {
+    cd $name
+    zcat ../$name.diff.gz | patch -p0
+    make
+    mkdir -p $PKG/usr/bin
+    mkdir -p $PKG/usr/man/man1
+    cp compress $PKG/usr/bin
+    ( cd $PKG/usr/bin ; ln -sf compress uncompress )
+    cp compress.1 $PKG/usr/man/man1
+    chown root.root $PKG/usr/bin/*
+    chmod 755 $PKG/usr/bin/*
+    chown root.root $PKG/usr/man/man1/*
+    strip $PKG/usr/bin/*
+    gzip -9 $PKG/usr/man/man?/*
+    ( cd $PKG/usr/man/man1 ; ln -sf compress.1.gz uncompress.1.gz )
+}
