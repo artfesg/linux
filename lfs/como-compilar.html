@@ -115,7 +115,7 @@
 <hr />
 <h2><a id="extraindo" name="extraindo">2. Extraindo arquivos</a></h2>
 
-<p>Voc&ecirc; baixou ou adquiriu por outra maneira um pacote de software. Geralmente ele &eacute; arquivado (tar) e comprimido (gzip) no formato tar.gz ou tgz (tamb&eacute;m conhecido como tarball). Primeiramente, copie o arquivo para a sua pasta de trabalho. Depois extraia. O comando apropriado para isto &eacute; <strong>tar xzvf <em>nomedoarquivo</em></strong>, onde <em>nomedoarquivo</em> &eacute; o nome do arquivo do software. O processo de extra&ccedil;&atilde;o usualmente aloca os arquivos apropriados em subpastas criadas para este fim. Note que se um pacotem tem seu nome com o sufixo .Z, o procedimento acima tamb&eacute;m serve, embora executando o <strong>uncompress</strong> para tanto, sendo que o comando <strong>tar xvf</strong> tamb&eacute;m serve para este &uacute;ltimo caso. Voc&ecirc; pode obter uma pr&eacute;via dos resultados desse processo pelo comando <strong>tar tzvf</strong>, que lista os arquivos contidos no pacote, sem extra&iacute;-los.</p>
+<p>Voc&ecirc; baixou ou adquiriu por outra maneira um pacote de software. Geralmente ele &eacute; arquivado (tar) e comprimido (gzip) no formato tar.gz ou tgz (tamb&eacute;m conhecido como tarball). Primeiramente, copie o arquivo para a sua pasta de trabalho. Depois extraia. O comando apropriado para isto &eacute; <strong>tar xzvf <em>nomedoarquivo</em></strong>, onde <em>nomedoarquivo</em> &eacute; o nome do arquivo do software. O processo de extra&ccedil;&atilde;o usualmente aloca os arquivos apropriados em subpastas criadas para este fim. Note que se um pacote tem seu nome com o sufixo .Z, o procedimento acima tamb&eacute;m serve, embora executando o <strong>uncompress</strong> para tanto, sendo que o comando <strong>tar xvf</strong> tamb&eacute;m serve para este &uacute;ltimo caso. Voc&ecirc; pode obter uma pr&eacute;via dos resultados desse processo pelo comando <strong>tar tzvf</strong>, que lista os arquivos contidos no pacote, sem extra&iacute;-los.</p>
 
 <p>O m&eacute;todo acima para extrair tarballs equivale ao seguinte::</p>
 
@@ -126,7 +126,7 @@
 
 <p>(O h&iacute;fen est&aacute; presente para que o comando tar receba seus valores de entrada do <code>stdin</code>.) Ou seja, o gzip extrair&aacute; o arquivo tar e o nome do arquivo tar resultante da extra&ccedil;&atilde;o ir&aacute; assumir o lugar do h&iacute;fen.</p>
 
-<p>SArquivos-fonte no novo formato <em>bzip2</em> (<code>.bz2</code>) podem ser extra&iacute;dos pelo comando <b>bzip2 -cd filename | tar xvf -</b>, ou, mais simplesmente pelo <b>tar xyvf nomedoarquivo</b>, assumido o <code>tar</code> em sua vers&atilde;o padr&atilde;o. Debian Linux usa uma vers&atilde;o diferente do <code>tar</code>, escrita por Hiroshi Takekawa, para a qual as op&ccedil;&otilde;es <em>-I, --bzip2, --bunzip2</em> funcionam particularmente.</p>
+<p>Arquivos-fonte no novo formato <em>bzip2</em> (<code>.bz2</code>) podem ser extra&iacute;dos pelo comando <b>bzip2 -cd filename | tar xvf -</b>, ou, mais simplesmente pelo <b>tar xyvf nomedoarquivo</b>, assumido o <code>tar</code> em sua vers&atilde;o padr&atilde;o. Debian Linux usa uma vers&atilde;o diferente do <code>tar</code>, escrita por Hiroshi Takekawa, para a qual as op&ccedil;&otilde;es <em>-I, --bzip2, --bunzip2</em> e os comandos <b>bunzip2 -c nomedoarquivo | tar xvf -</b> e <b>tar xjvf nomedoarquivo</b> funcionam particularmente.</p>
 
 <p>[Muito obrigado a R. Brock Lynn e Fabrizio Stefani pelas corre&ccedil;&otilde;es e atualiza&ccedil;&otilde;es das informa&ccedil;&otilde;es acima.]</p>
 
@@ -134,7 +134,7 @@
 
 <p>&nbsp;</p>
 
-<p>&Agrave;s vezes, o arquivo comprimido precisa ser extra&iacute;do e instalado pelo diret&oacute;rio incial do usu&aacute;rio, ou porventura outro certo diret&oacute;rio como <code>/</code>, <code>/usr/src</code>, ou <code>/opt</code>, conforme informado no config do pacote. Se voc&ecirc; obter uma mensagem de erro ao tentar extrair um arquivo, essa pode ser a raz&atilde;o. Portanto, leia os documentos do pactoe, em especial os arquivos <code>README</code> e/ou <code>Install</code>, se presentes, e esite osd arquivos config e/ou <code>Makefiles</code> se necess&aacute;rio, de acordo com as instru&ccedil;&otilde;es de instala&ccedil;&atilde;o. Observe que em regra voc&ecirc; n&atilde;o deve alterar o arquivo <code>Imake</code>, pois isto pode ter consequ&ecirc;ncias imprevis&iacute;veis. A maior parte dos pacotes de softwares permitem automatizar todo esse processo executando o comando <b>make install</b> para colocar os b&iacute;n&aacute;rios em seus endere&ccedil;os apropriados.</p>
+<p>&Agrave;s vezes, o arquivo comprimido precisa ser extra&iacute;do e instalado pelo diret&oacute;rio incial do usu&aacute;rio, ou porventura outro certo diret&oacute;rio como <code>/</code>, <code>/usr/src</code>, ou <code>/opt</code>, conforme informado no config do pacote. Se voc&ecirc; obter uma mensagem de erro ao tentar extrair um arquivo, essa pode ser a raz&atilde;o. Portanto, leia os documentos do pacote, em especial os arquivos <code>README</code> e/ou <code>Install</code>, se presentes, e edite os arquivos config e/ou <code>Makefiles</code> se necess&aacute;rio, de acordo com as instru&ccedil;&otilde;es de instala&ccedil;&atilde;o. Observe que em regra voc&ecirc; n&atilde;o deve alterar o arquivo <code>Make</code>, pois isto pode ter consequ&ecirc;ncias imprevis&iacute;veis. A maior parte dos pacotes de softwares permitem automatizar todo esse processo executando o comando <b>make install</b> para colocar os b&iacute;n&aacute;rios em seus endere&ccedil;os apropriados.</p>
 
 <p>&nbsp;</p>
 
@@ -150,7 +150,7 @@
 	<li>Alguns arquivos-fonte tem sido processados usando utilit&aacute;rios de compress&atilde;o DOS, Mac, Amiga, tais como<em> zip</em>, <em>arc</em>, <em>lha</em>, <em>arj</em>, <em>zoo</em>, <em>rar</em>, e <em>shk</em>. Felizmente, no <a href="http://metalab.unc.edu">Sunsite</a> e em outros lugares h&aacute; utilit&aacute;rios Linux de extra&ccedil;&atilde;o que podem lidar com a maioria destes arquivos.</li>
 </ul>
 
-<p>Ocasionalmente, voc&ecirc; pode precisar atualizar ou incorporar bug fixes em arquivos-fonte n&atilde;o comprimidos usando um arquivo <code>patch</code> ou <code>diff</code> para listar as mudan&ccedil;as. Os arquivos doc e/ou <code>README</code> podem informa se &eacute; esse o caso. The normal syntax for invoking Larry Wall&#39;s powerful <em>patch</em> utility is <b>patch &lt; patchfile</b>.</p>
+<p>Ocasionalmente, voc&ecirc; pode precisar atualizar ou incorporar bug fixes em arquivos-fonte n&atilde;o comprimidos usando um arquivo <code>patch</code> ou <code>diff</code> que liste as mudan&ccedil;as. Os arquivos doc e/ou <code>README</code> podem informa se &eacute; esse o caso. The normal syntax for invoking Larry Wall&#39;s powerful <em>patch</em> utility is <b>patch &lt; patchfile</b>.</p>
 
 <p>Agora voc&ecirc; pode proceder ao est&aacute;gio de compila&ccedil;&atilde;o.</p>
 
