@@ -163,5 +163,67 @@
 <p>&nbsp;</p>
 
 <hr />
+<h2><a name="s3">3. Usando o Make</a></h2>
+
+<p>O <code>Makefile</code> &eacute; a chave para o processo de compila&ccedil;&atilde;o. Em sua forma mais simples, um Makefile pe um script para compila&ccedil;&atilde;o dos &quot;bin&aacute;rios&quot;, que s&atilde;o as partes execut&aacute;veis de um pacote. O Makefile pode tamb&eacute;m oferecer uma forma de atualiza&ccedil;&atilde;o do pacote de software sem a necessidade de recompilar cada arquivo-fonte em si, mas isso &eacute; uma outra hist&oacute;ria (outro artigo).</p>
+
+<p>No mesmo ponto, o Makefile faz carregar o <code>cc</code> ou o <code>gcc</code>. Isto &eacute; atualmente um pr&eacute;-processador, um compilador de C (ou C++), e um linker, invocados nessa ordem. Este processo converte o arquivo-fonte em bin&aacute;rios, os atuais execut&aacute;veis.</p>
+
+<p>Geralmente se invoca o <em>make</em> digitando <b>make</b>. Isto, em geral, compila todos os arquivos execut&aacute;veis necess&aacute;rios para o pacote em quest&atilde;o. Contudo, o make tamb&eacute;m pode realizar outras tarefas, como instalar os arquivos em seus diret&oacute;rios apropriados (<b>make install</b>) ou remover object-files velhos (<b>make clean</b>). O comando <b>make -n</b> permite prever o processo de compila&ccedil;&atilde;o, mostrando todos os comandos que ser&atilde;o desencadeados pelo make, por&eacute;m sem execut&aacute;-los.</p>
+
+<p>&nbsp;</p>
+
+<p>Apenas sofwares simplistas usam um Makefile gen&eacute;rico. Instala&ccedil;&atilde;oes mais complexas requerem que o makefile seja editado de acordo com a localiza&ccedil;&atilde;o das bibliotecas, arquivos e recursos particulares da m&aacute;quina.ccording to the location of libraries, include files, and resources on your particular machine. Isto &eacute; especialmente o caso quando a compila&ccedil;&atilde;o necessita instalar as bilbliotecas <code>X11</code>. Os arquivos <em>Imake</em> e <em>xmkmf</em> realizam essa tarefa.</p>
+
+<p>Um <code>Imakefile</code> &eacute; um Makefile &quot;modelo&quot;. O utilit&aacute;rio imake constr&oacute;i um Makefile apropriado para o sistema a partir de um arquivo Imakefile. Na maioria dos casos, entretanto, voc&ecirc; ir&aacute; executar o <b>xmkmf</b>, um shell script que invoca o imake, um front end ppara isso. Verifique o arquivo README ou o arquivo INSTALL incluso no pacote para instru&ccedil;&otilde;es espec&iacute;ficas. (Se, depois de extra&iacute;do o pacote, houver um arquivo <code>Imake</code> presente no diret&oacute;rio base, this is a dead giveaway that <b>xmkmf</b> should be run.) Leia as man pages do <code>Imake</code> e do <code>xmkmf</code> para uma an&aacute;lise mais detalhada do procedimento.</p>
+
+<p>Be aware that <code>xmkmf</code> and <code>make</code> may need to be invoked as root, especially when doing a <b>make install</b> to move the binaries over to the <code>/usr/bin</code> or <code>/usr/local/bin</code> directories. Using make as an ordinary user without root privileges will likely result in <em>write access denied</em> error messages because you lack write permission to system directories. Check also that the binaries created have the proper execute permissions for you and any other appropriate users.</p>
+
+<p>Invoking <b>xmkmf</b> uses the <code>Imake</code> file to build a new Makefile appropriate for your system. You would normally invoke <b>xmkmf</b> with the <b>-a</b> argument, to automatically do a <em>make Makefiles, make includes,</em> and <em>make depend</em>. This sets the variables and defines the library locations for the compiler and linker. Sometimes, there will be no <code>Imake</code> file, instead there will be an <code>INSTALL</code> or <code>configure</code> script that will accomplish this purpose. Note that if you run <code>configure</code>, it should be invoked as <b>./configure</b> to ensure that the correct <code>configure</code> script in the current directory is called. In most cases, the <code>README</code> file included with the distribution will explain the install procedure.</p>
+
+<p>It is usually a good idea to visually inspect the <code>Makefile</code> that <code>xmkmf</code> or one of the install scripts builds. The Makefile will normally be correct for your system, but you may occasionally be required to &quot;tweak&quot; it or correct errors manually.</p>
+
+<p>&nbsp;</p>
+
+<p>Installing the freshly built binaries into the appropriate system directories is usually a matter of running <b>make install</b> as root. The usual directories for system-wide binaries on modern Linux distributions are <code>/usr/bin</code>, <code>/usr/X11R6/bin</code>, and <code>/usr/local/bin</code>. The preferred directory for new packages is <code>/usr/local/bin</code>, as this will keep separate binaries not part of the original Linux installation.</p>
+
+<p>Packages originally targeted for commercial versions of UNIX may attempt to install in the <code>/opt</code> or other unfamiliar directory. This will, of course, result in an installation error if the intended installation directory does not exist. The simplest way to deal with this is to create, as root, an <code>/opt</code> directory, let the package install there, then add that directory to the <code>PATH</code> environmental variable. Alternatively, you may create symbolic links to the <code>/usr/local/bin</code> directory.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>Your general installation procedure will therefore be:</p>
+
+<ul>
+	<li>Read the <code>README</code> file and other applicable docs.</li>
+	<li>Run <b>xmkmf -a</b>, or the <code>INSTALL</code> or <code>configure</code> script.</li>
+	<li>Check the <code>Makefile</code>.</li>
+	<li>If necessary, run <b>make clean</b>, <b>make Makefiles</b>, <b>make includes</b>, and <b>make depend</b>.</li>
+	<li>Run <b>make</b>.</li>
+	<li>Check file permissions.</li>
+	<li>If necessary, run <b>make install</b>.</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p><em>Notes:</em></p>
+
+<p>&nbsp;</p>
+
+<ul>
+	<li>You would not normally build a package as root. Doing an <b>su</b> to root is only necessary for installing the compiled binaries into system directories.</li>
+	<li>After becoming familiar with <em>make</em> and its uses, you may wish to add additional optimization options passed to <code>gcc</code> in the standard <code>Makefile</code> included or created in the package you are installing. Some of these common options are <em>-O2</em>, <em>-fomit-frame-pointer</em>, <em>-funroll-loops</em>, and <em>-mpentium</em> (if you are running a Pentium cpu). Use caution and good sense when modifying a <code>Makefile</code>!</li>
+	<li>After the <em>make</em> creates the binaries, you may wish to <b>strip</b> them. The <b>strip</b> command removes the symbolic debugging information from the binaries, and reduces their size, often drastically. This also disables debugging, of course.</li>
+	<li>The <a href="http://sunsite.auc.dk/pack/">Pack Distribution Project</a> offers a different approach to creating archived software packages, based on a set of Python scripting tools for managing symbolic links to files installed in separate <em>collection directories</em>. These archives are ordinary <em>tarballs</em>, but they install in <code>/coll</code> and <code>/pack</code> directories. You may find it necessary to download the <em>Pack-Collection</em> from the above site should you ever run across one of these distributions.</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<hr />
 </body>
 </html>
